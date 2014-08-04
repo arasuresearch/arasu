@@ -1,0 +1,16 @@
+name: {{.Name}}
+description: A {{.Name}} web application
+dependencies:
+  angular: any
+  arasu: any
+  route_hierarchical: any
+  shadow_dom: any
+  browser: any
+  js: any
+  polymer: any
+  http: any
+  json_object: any
+dev_dependencies:
+  unittest: any
+transformers:
+- angular

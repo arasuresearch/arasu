@@ -1,0 +1,8 @@
+package boot
+
+import (
+	_ "arasu/conf"
+	_ "conf"
+	{{range $_,$e := .Modes}}_ "conf/{{$e}}"
+	{{end}}
+)

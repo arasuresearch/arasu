@@ -1,0 +1,15 @@
+package {{.Pkg}}
+
+import (
+	{{range $_,$e := .Imports}}"{{$e}}"
+	{{end}}
+)
+{{range $_,$e0 := .Tables}}
+type {{$e0.Name}} struct {
+{{range $_,$e1 := $e0.Columns}}    {{$e1.Name}} {{$e1.Type}} {{$e1.Tag}}
+{{end}}}
+
+var {{$e0.Name}}Columns = []string{ {{range $_,$e1 := $e0.Columns}}"{{$e1.Name}}",{{end}} }
+
+{{end}}
+

@@ -1,0 +1,29 @@
+package dispatchers
+
+import (
+	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/router"
+	"boot"
+	"reflect"
+	"{{.PkgPath}}"
+)
+
+func init() {
+	rtype := reflect.ValueOf(&{{.Cntr}}Controller{}).Type()
+	methods := []string{}
+	for i := 0; i < rtype.NumMethod(); i++ {
+		m := rtype.Method(i)
+		if len(m.PkgPath) == 0 && lib.IsItVisible(m.Name) {
+			methods = append(methods, m.Name)
+		}
+	}
+	h := router.Handler{Type: rtype, Methods: methods}
+	FuncsArgs := map[string][]string{
+	    {{range $k,$v := .FuncsArgs}}"{{$k}}": { 
+	 	    {{range $_,$e := $v}}"{{$e}}",{{end}}  
+	 	},{{end}}
+    }
+	h.FuncsArgs = FuncsArgs
+    boot.App.Registry["{{.Url}}"] = h
+
+}
