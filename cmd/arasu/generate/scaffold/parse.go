@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-var bigdataAttrTypes = []string{"int", "bool", "String", "DateTime", "num", "Int", "Bool", "Num"}
+var bigdataAttrTypes = []string{"int", "bool", "String", "DateTime", "num"}
 
 func parseBigDataAttrs(a []string) (map[string]string, interface{}, interface{}, string) {
 	//[Contact Post:Fn Post:Ln Profile:Name:String Profile:Age:int Profile:Dob:DateTime]
@@ -62,7 +62,7 @@ func parseBigDataAttrs(a []string) (map[string]string, interface{}, interface{},
 				cmva[cf] = map[string]string{ci: ct}
 			}
 		default:
-			cf, ci, ct := lib.Titleize(a[0]), lib.Titleize(a[1]), lib.Titleize(a[2])
+			cf, ci, ct := lib.Titleize(a[0]), lib.Titleize(a[1]), a[2]
 
 			if cols, ok := cmva[cf]; ok {
 				cols.(map[string]string)[ci] = ct

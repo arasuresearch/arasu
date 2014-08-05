@@ -4,15 +4,15 @@
 <div ng-form="form">
   {{range $k,$v := .ClientModelViewAttrs}} 
   {{range $k0,$v0 := $v}} 
-    {{if eq $v0 "Int"}}
+    {{if eq $v0 "int"}}
       {{template "int" (print $k "." $k0)}}
     {{else if eq $v0 "String"}}  
       {{template "String" (print $k "." $k0)}}
     {{else if eq $v0 "DateTime"}}  
       {{template "DateTime" (print $k "." $k0)}}
-    {{else if eq $v0 "Bool"}}  
+    {{else if eq $v0 "bool"}}  
       {{template "bool" (print $k "." $k0)}}
-    {{else if eq $v0 "Num"}}  
+    {{else if eq $v0 "num"}}  
       {{template "num" (print $k "." $k0)}}
     {{end}}
   {{end}}

@@ -28,10 +28,12 @@ open terminal
 Creating a New Arasu Project
 ============================
 <pre>
+Part 1 : creating scaffold for relational Database Management System aka RDBMS  
+
 ~$ arasu new demo
 ~$ cd demo
 ~$ arasu dstore create
-~$ arasu dstore generate scaffold User name pass:string age:integer dob:timestamp sex:bool
+~$ arasu generate scaffold User name pass:string age:integer dob:timestamp sex:bool
 ~$ arasu dstore migrate  
 
 Now start the server:
@@ -42,6 +44,38 @@ now visit http://localhost:4000/ on <i><a href="https://www.dartlang.org/tools/d
 
 There you are !!!
 
+Part 2 : creating scaffold for BigData (hbase)
+stop the server by pressing CTRL+C
+
+start bigdata...
+
+~$ start-hbase.sh
+~$ hbase thrift start
+
+leave this terminal to run thrift deamon
+
+
+
+~$ arasu dstore create --dstore bigdata
+
+this will result in failure
+
+unfortunately hbase thrift API is not supporting to create database through API
+so we have to create it manually . for that 
+~$ hbase shell
+ >  create_namespace 'demo_development'
+
+close hbase shell 
+
+~$ arasu generate scaffold Profile Contact{Name:String,Age:int,Sex:bool} --dstore bigdata
+~$ arasu dstore migrate --dstore bigdata
+
+Now start the server:
+
+~$ arasu serve
+
+now visit http://localhost:4000/ on dartium
+
 <p>lets dive into Tutorial  <a href="http://arasuframework.org">Arasu Framework</a>.</p>
 
 </pre>
@@ -49,3 +83,4 @@ There you are !!!
 License
 ============================
 <p>Released under the <a href="http://www.opensource.org/licenses/MIT">MIT License</a>.</p>   
+
