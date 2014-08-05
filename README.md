@@ -41,6 +41,9 @@ Now start the server:
 ~$ arasu serve
 
 now visit http://localhost:4000/ on <i><a href="https://www.dartlang.org/tools/dartium">Dartium</a> or dart enabled chrome</i> browser. 
+then visit 
+
+`http://localhost:4000/users.html`
 
 There you are !!!
 
@@ -74,7 +77,7 @@ Now start the server:
 
 ~$ arasu serve
 
-now visit http://localhost:4000/ on dartium
+now visit `http://localhost:4000/profiles.html` on dartium
 
 <p>lets dive into Tutorial  <a href="http://arasuframework.org">Arasu Framework</a>.</p>
 
