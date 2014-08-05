@@ -23,9 +23,14 @@
 package main
 
 import (
+	_ "bitbucket.org/pkg/inflect"
+	_ "git.apache.org/thrift.git/lib/go/thrift"
 	"github.com/arasuresearch/arasu/app"
 	"github.com/arasuresearch/arasu/cmd/arasu_without_app"
 	"github.com/arasuresearch/arasu/lib"
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/jinzhu/gorm"
+
 	"log"
 	"reflect"
 	"strings"
