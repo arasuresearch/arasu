@@ -15,15 +15,27 @@ Features
 
 Installation
 ============
-* Install <a href="http://golang.org">Golang</a>
-* Install <a href="http://dartlang.org">Dartlang</a>
-* Install <a href="http://www.mysql.com">Mysql</a>
-* Install <a href="http://hbase.apache.org">Hbase</a>
-* Install Arasu Framework
+* Install <a href="http://golang.org">Golang</a> then add golang binary into system PATH and verfiy the sucessfull installation by 
+~$ go version
+> go version go1.3 linux/amd64
 
-open terminal
+* Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add dart-sdk binary into system PATH and verfiy the sucessfull installation by 
+~$ dart --version
+> Dart VM version: 1.5.3 (Thu Jul 23 01:43:07 2014) on "linux_x64"
 
-`go get github.com/arasuresearch/arasu` 
+* Install <a href="http://www.mysql.com">Mysql</a> then add mysql binary into system PATH and verfiy the sucessfull installation by 
+~$ mysql --version
+> mysql  Ver 14.14 Distrib 5.5.37, for debian-linux-gnu (x86_64) using readline 6.2
+
+
+* Install <a href="http://hbase.apache.org">Hbase</a> then add hbase binary into system PATH and verfiy the installation is sucessfull by 
+~$ hbase version
+> //some valid output
+
+finally 
+* Install Arasu Framework by
+
+~$ go get github.com/arasuresearch/arasu 
 
 Creating a New Arasu Project
 ============================
@@ -44,6 +56,8 @@ Now start the server:
   
 ~$ arasu serve
   
+after successfull start....
+
 now visit http://localhost:4000/ on <i><a href="https://www.dartlang.org/tools/dartium">Dartium</a> or dart enabled chrome</i> browser. 
 then visit 
 
