@@ -22,6 +22,7 @@
 
 package main
 
+//TODO : remove void import packages later
 import (
 	_ "bitbucket.org/pkg/inflect"
 	_ "git.apache.org/thrift.git/lib/go/thrift"

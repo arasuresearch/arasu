@@ -39,7 +39,11 @@ Part 1 : creating scaffold for relational Database Management System aka RDBMS
 Now start the server:
 
 ~$ arasu serve
-
+//you may get dart pub serve error for few times, but you can ignore and stop it by CTRL+C.
+//and start the same command again
+  
+~$ arasu serve
+  
 now visit http://localhost:4000/ on <i><a href="https://www.dartlang.org/tools/dartium">Dartium</a> or dart enabled chrome</i> browser. 
 then visit 
 
