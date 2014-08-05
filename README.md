@@ -20,25 +20,28 @@ Installation
 ============
 
 * Install <a href="http://golang.org">Golang</a> then add golang binary into system PATH and verify the sucessfull installation by 
-
-> ~$ go version
-> go version go1.3 linux/amd64
+<pre>
+~$ go version
+go version go1.3 linux/amd64
+</pre>
 
 * Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add dart-sdk binary into system PATH and verify the sucessfull installation by 
-
-> ~$ dart --version
-> Dart VM version: 1.5.3 (Thu Jul 23 01:43:07 2014) on "linux_x64"
+<pre>
+~$ dart --version
+Dart VM version: 1.5.3 (Thu Jul 23 01:43:07 2014) on "linux_x64"
+</pre>
 
 * Install <a href="http://www.mysql.com">Mysql</a> then add mysql binary into system PATH and verify the sucessfull installation by 
-
-> ~$ mysql --version
-> mysql  Ver 14.14 Distrib 5.5.37, for debian-linux-gnu (x86_64) using readline 6.2
-
+<pre>
+~$ mysql --version
+mysql  Ver 14.14 Distrib 5.5.37, for debian-linux-gnu (x86_64) using readline 6.2
+</pre>
 
 * Install <a href="http://hbase.apache.org">Hbase</a> then add hbase binary into system PATH and verify the installation is sucessfull by 
-
-> ~$ hbase version
-> //some valid output
+<pre>
+~$ hbase version
+//some valid output
+</pre>
 
 finally 
 * Install Arasu Framework by
@@ -112,7 +115,7 @@ come back to old terminal then
 
 this will result in failure
 
-unfortunately Hbase thrift V1 is not supporting to create database through API Calls
+unfortunately Hbase thrift V1 Binary server is not supporting to create database through API Calls
 so we have to create it manually . to do that
 <pre>
 
