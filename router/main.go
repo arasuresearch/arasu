@@ -24,7 +24,7 @@ package router
 
 import (
 	"fmt"
-	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"net/http"
 	"strings"
 )
@@ -124,7 +124,7 @@ func FindMatches(matches []Match, method string, paths []string, i int, format s
 			fname = cf[1]
 			cntr, ok = registry["/"+cname]
 			if ok {
-				if !lib.StringArrayContains(cntr.Methods, fname) {
+				if !stringer.Contains(cntr.Methods, fname) {
 					err = fmt.Errorf("Action %s Not Found on Controller(%s) ", fname, cname)
 				}
 			} else {

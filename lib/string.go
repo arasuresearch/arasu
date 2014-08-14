@@ -11,70 +11,50 @@ import (
 // 	s = strings.Join(strings.Split(s, " "), "")
 // 	return s
 // }
-func Camelize(s string) string {
-	b := make([]byte, 0, len(s)*2)
-	for i, e := range s {
-		if e > 64 && e < 91 {
-			if i == 0 {
-				b = append(b, byte(e+32))
-			} else {
-				b = append(b, byte(rune('_')), byte(e+32))
-			}
-		} else {
-			b = append(b, byte(e))
-		}
-	}
-	return string(b)
-}
-func Titleize(s string) string {
-	var r string
-	for _, e := range strings.Split(s, "_") {
-		r = r + strings.Title(e)
-	}
-	return r
-}
+// func Camelize(s string) string {
+// 	b := make([]byte, 0, len(s)*2)
+// 	for i, e := range s {
+// 		if e > 64 && e < 91 {
+// 			if i == 0 {
+// 				b = append(b, byte(e+32))
+// 			} else {
+// 				b = append(b, byte(rune('_')), byte(e+32))
+// 			}
+// 		} else {
+// 			b = append(b, byte(e))
+// 		}
+// 	}
+// 	return string(b)
+// }
+// func Titleize(s string) string {
+// 	var r string
+// 	for _, e := range strings.Split(s, "_") {
+// 		r = r + strings.Title(e)
+// 	}
+// 	return r
+// }
 
-// below constantice has error
-// Contact #ontact
+// // below constantice has error
+// // Contact #ontact
 
-func Constantize(s string) string {
-	b := make([]byte, 0, len(s))
-	var flag = true
-	for _, e := range s {
-		if e == 95 {
-			flag = true
-			continue
-		} else {
-			if flag {
-				flag = false
-				b = append(b, byte(e-32))
-			} else {
-				b = append(b, byte(e))
-			}
-		}
-	}
-	return string(b)
-}
-
-func StringArrayContains(a []string, b string) bool {
-	for _, e := range a {
-		if e == b {
-			return true
-		}
-	}
-	return false
-}
-func StringArrayRemove(a []string, b string) []string {
-
-	for i, e := range a {
-		if e == b {
-			a[i] = a[len(a)-1]
-			a = a[0 : len(a)-1]
-			break
-		}
-	}
-	return a
-}
+// func Constantize(s string) string {
+// 	b := make([]byte, 0, len(s))
+// 	var flag = true
+// 	for _, e := range s {
+// 		if e == 95 {
+// 			flag = true
+// 			continue
+// 		} else {
+// 			if flag {
+// 				flag = false
+// 				b = append(b, byte(e-32))
+// 			} else {
+// 				b = append(b, byte(e))
+// 			}
+// 		}
+// 	}
+// 	return string(b)
+// }
 
 var HiddenFuncs = []string{"Open", "Serve", "Close", "RedirectTo", "Render", "BeforeFunc", "AfterFunc"}
 

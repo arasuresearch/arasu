@@ -2,7 +2,7 @@ package abstract
 
 import (
 	"fmt"
-	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"strings"
 )
 
@@ -29,7 +29,7 @@ func (a *AbstractAdapter) TableExists(name string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	if lib.StringArrayContains(tables, name) {
+	if stringer.Contains(tables, name) {
 		return true, nil
 	}
 
@@ -43,7 +43,7 @@ func (a *AbstractAdapter) TableExists(name string) (bool, error) {
 		if err != nil {
 			return false, err
 		}
-		if lib.StringArrayContains(tables, name) {
+		if stringer.Contains(tables, name) {
 			return true, nil
 		}
 	}

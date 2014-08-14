@@ -22,13 +22,13 @@ Installation
 * Install <a href="http://golang.org">Golang</a> then add golang binary into system PATH and verify the sucessfull installation by 
 <pre>
 ~$ go version
-go version go1.3 linux/amd64
+go version go1.3.1 linux/amd64
 </pre>
 
 * Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add dart-sdk binary into system PATH and verify the sucessfull installation by 
 <pre>
 ~$ dart --version
-Dart VM version: 1.5.3 (Thu Jul 23 01:43:07 2014) on "linux_x64"
+Dart VM version: 1.5.8 (Tue Jul 29 07:05:41 2014) on "linux_x64"
 </pre>
 
 * Install <a href="http://www.mysql.com">Mysql</a> then add mysql binary into system PATH and verify the sucessfull installation by 
@@ -153,5 +153,23 @@ Contribute
 
 License
 ============================
-<p>Released under the <a href="http://www.opensource.org/licenses/MIT">MIT License</a>.</p>   
 
+Copyright (c) 2014 Thaniyarasu Kannusamy <thaniyarasu@gmail.com>.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

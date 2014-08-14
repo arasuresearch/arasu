@@ -3,6 +3,7 @@ package app
 import (
 	"bytes"
 	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"go/ast"
 	"go/parser"
 	"go/token"
@@ -69,7 +70,7 @@ func remove_anonymous_dispatchers(disRoot string, dsts []string) error {
 		if info.IsDir() {
 			return nil
 		}
-		if !lib.StringArrayContains(dsts, src) {
+		if !stringer.Contains(dsts, src) {
 			if err := os.Remove(src); err != nil {
 				return err
 			}
@@ -80,7 +81,7 @@ func remove_anonymous_dispatchers(disRoot string, dsts []string) error {
 func create_data_cntr(url, cntr_pkg_root string) *DataCntr {
 	_, funcs_args, _ := parseController(cntr_pkg_root)
 	pkgName := filepath.Base(url)
-	cntrName := pkgName + "." + lib.Constantize(pkgName)
+	cntrName := pkgName + "." + stringer.Camelize(pkgName)
 	return &DataCntr{"server/controllers" + url, cntrName, url, funcs_args}
 }
 func parseController(cntr_path string) (string, map[string][]string, error) {

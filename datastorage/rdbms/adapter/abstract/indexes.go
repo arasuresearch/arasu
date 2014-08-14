@@ -2,7 +2,7 @@ package abstract
 
 import (
 	"encoding/json"
-	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"log"
 	"reflect"
 	"strings"
@@ -11,7 +11,7 @@ import (
 //CREATE  INDEX `index_people_on_name_and_age`  ON `people` (`name`, `age`)
 
 func (a *AbstractAdapter) IndexExists(name string) bool {
-	return lib.StringArrayContains([]string{}, name)
+	return stringer.Contains([]string{}, name)
 }
 func (a *AbstractAdapter) CreateIndex(table_name string, column_names []string, options map[string]interface{}) error {
 

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/arasuresearch/arasu/datastorage/rdbms/adapter"
 	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"log"
 	"os/exec"
 	"path"
@@ -99,7 +100,7 @@ func (d *DstoreCommand) Migrate() error {
 		return err
 	}
 	for k, v := range d.Migrations {
-		if !lib.StringArrayContains(versions, k) {
+		if !stringer.Contains(versions, k) {
 			if err := d.Adapter.Transaction(v.Up); err != nil {
 				return err
 			}
@@ -121,7 +122,7 @@ func (d *DstoreCommand) Rollback() error {
 		return err
 	}
 	for k, v := range d.Migrations {
-		if lib.StringArrayContains(versions, k) {
+		if stringer.Contains(versions, k) {
 			if err := d.Adapter.Transaction(v.Down); err != nil {
 				return err
 			}

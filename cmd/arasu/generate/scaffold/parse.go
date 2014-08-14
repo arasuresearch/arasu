@@ -2,7 +2,7 @@ package scaffold
 
 import (
 	"encoding/json"
-	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"log"
 	"strings"
 )
@@ -36,14 +36,14 @@ func parseBigDataAttrs(a []string) (map[string]string, interface{}, interface{},
 		} else {
 			ls = e
 		}
-		attrs[lib.Titleize(ls)] = "ColumnFamily"
+		attrs[stringer.Camelize(ls)] = "ColumnFamily"
 	}
 
 	cattrs := []string{"Id"}
 	for _, e := range a {
 		if strings.Contains(e, ":") {
 			la := strings.Split(e, ":")
-			cattrs = append(cattrs, lib.Titleize(la[0])+"."+lib.Titleize(la[1]))
+			cattrs = append(cattrs, stringer.Camelize(la[0])+"."+stringer.Camelize(la[1]))
 		}
 	}
 
@@ -55,14 +55,14 @@ func parseBigDataAttrs(a []string) (map[string]string, interface{}, interface{},
 		case 1:
 
 		case 2:
-			cf, ci, ct := lib.Titleize(a[0]), lib.Titleize(a[1]), "String"
+			cf, ci, ct := stringer.Camelize(a[0]), stringer.Camelize(a[1]), "String"
 			if cols, ok := cmva[cf]; ok {
 				cols.(map[string]string)[ci] = ct
 			} else {
 				cmva[cf] = map[string]string{ci: ct}
 			}
 		default:
-			cf, ci, ct := lib.Titleize(a[0]), lib.Titleize(a[1]), a[2]
+			cf, ci, ct := stringer.Camelize(a[0]), stringer.Camelize(a[1]), a[2]
 
 			if cols, ok := cmva[cf]; ok {
 				cols.(map[string]string)[ci] = ct
@@ -74,7 +74,7 @@ func parseBigDataAttrs(a []string) (map[string]string, interface{}, interface{},
 	for _, v := range cmva {
 		if cfa, ok := v.(map[string]string); ok {
 			for _, v := range cfa {
-				if !lib.StringArrayContains(bigdataAttrTypes, v) {
+				if !stringer.Contains(bigdataAttrTypes, v) {
 					log.Fatalf("%s type is not supported", v)
 				}
 			}
@@ -130,16 +130,16 @@ func parseRdbmsAttrs(a []string) (map[string]string, interface{}, interface{}, s
 	for _, e := range a {
 		if strings.Contains(e, ":") {
 			la := strings.SplitN(e, ":", 2)
-			if !lib.StringArrayContains(rdbmsAttrTypes, la[1]) {
+			if !stringer.Contains(rdbmsAttrTypes, la[1]) {
 				log.Fatalf("%s type is not supported", la[1])
 			}
-			attrs[la[0]] = lib.Titleize(rdbmsAttrsRealType(la[1]))
-			cmva[lib.Titleize(la[0])] = lib.Titleize(rdbmsClientAttrsRealType(la[1]))
-			col = lib.Titleize(la[0])
+			attrs[la[0]] = stringer.Camelize(rdbmsAttrsRealType(la[1]))
+			cmva[stringer.Camelize(la[0])] = stringer.Camelize(rdbmsClientAttrsRealType(la[1]))
+			col = stringer.Camelize(la[0])
 		} else {
 			attrs[e] = "String"
-			cmva[lib.Titleize(e)] = "String"
-			col = lib.Titleize(e)
+			cmva[stringer.Camelize(e)] = "String"
+			col = stringer.Camelize(e)
 		}
 		cols = append(cols, col)
 	}

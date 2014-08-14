@@ -24,7 +24,6 @@ package main
 
 //TODO : remove void import packages later
 import (
-	_ "bitbucket.org/pkg/inflect"
 	_ "git.apache.org/thrift.git/lib/go/thrift"
 	"github.com/arasuresearch/arasu/app"
 	"github.com/arasuresearch/arasu/cmd/arasu_without_app"

@@ -3,6 +3,7 @@ package lib
 import (
 	"bytes"
 	"fmt"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"go/parser"
 	"go/token"
 	"io"
@@ -129,7 +130,7 @@ func IsExist(src string) (bool, error) {
 func AddImports(src, imp string) error {
 	if imps, err := ParseImports(src); err != nil {
 		return err
-	} else if StringArrayContains(imps, imp) {
+	} else if stringer.Contains(imps, imp) {
 		return nil
 	}
 	data, _ := ioutil.ReadFile(src)

@@ -5,6 +5,7 @@ import (
 	"github.com/arasuresearch/arasu/datastorage/bigdata/adapter"
 	"github.com/arasuresearch/arasu/datastorage/bigdata/adapter/abstract"
 	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"log"
 	"os/exec"
 	"path"
@@ -102,7 +103,7 @@ func (d *DstoreCommand) Migrate() error {
 	}
 	//fmt.Println(versions)
 	for k, v := range d.Migrations {
-		if !lib.StringArrayContains(versions, k) {
+		if !stringer.Contains(versions, k) {
 			v.Up()
 			d.Adapter.InsertIntoSchemaMigration(k)
 		}
@@ -121,7 +122,7 @@ func (d *DstoreCommand) Rollback() error {
 	}
 
 	for k, v := range d.Migrations {
-		if lib.StringArrayContains(versions, k) {
+		if stringer.Contains(versions, k) {
 			v.Down()
 			d.Adapter.DeleteFromSchemaMigration(k)
 		}

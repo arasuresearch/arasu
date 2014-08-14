@@ -2,6 +2,7 @@ package lib
 
 import (
 	"fmt"
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"reflect"
 	"strconv"
 	"strings"
@@ -41,7 +42,7 @@ func mapToElem(e reflect.Value, t reflect.Type, p map[string]interface{}, strict
 
 		if v, ok := p[key]; ok {
 			iv = v
-		} else if v, ok := p[Camelize(key)]; ok {
+		} else if v, ok := p[stringer.Underscore(key)]; ok {
 			iv = v
 		} else {
 			if tfield.Anonymous {

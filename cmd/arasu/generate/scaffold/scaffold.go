@@ -27,6 +27,8 @@ import (
 	"github.com/arasuresearch/arasu/app"
 	"github.com/arasuresearch/arasu/cmd/common"
 	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
+
 	"path"
 )
 
@@ -61,8 +63,11 @@ func (c *Scaffold) Run() {
 		return
 	}
 
-	c.Name = lib.Camelize(c.Args[0])
-	c.Cname = lib.Constantize(c.Name)
+	// c.Name = lib.Camelize(c.Args[0])
+	// c.Cname = lib.Constantize(c.Name)
+	c.Name = stringer.Underscore(c.Args[0])
+	c.Cname = stringer.Camelize(c.Name)
+
 	c.Args = c.Args[1:]
 	c.ParseArgs = c.ParseArgs[1:]
 	// c.Attrs, c.GenArgs = lib.ParseKeyValueAndRemaningArguments(c.Args[1:])

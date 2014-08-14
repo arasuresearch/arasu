@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"github.com/arasuresearch/arasu/datastorage/bigdata/adapter/abstract"
 	. "github.com/arasuresearch/arasu/datastorage/bigdata/adapter/hbase/thrift/Hbase"
-	"github.com/arasuresearch/arasu/lib"
+
+	"github.com/arasuresearch/arasu/lib/stringer"
 	"log"
 	"strings"
 )
@@ -92,5 +93,5 @@ func (a *HbaseAdapter) IsThisTableExists(name string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	return lib.StringArrayContains(names, name), nil
+	return stringer.Contains(names, name), nil
 }
