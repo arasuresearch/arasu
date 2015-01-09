@@ -1,0 +1,6 @@
+arasubuild() {
+   go install github.com/arasuresearch/arasu github.com/arasuresearch/arasu/app github.com/arasuresearch/arasu/cmd/...
+   go install github.com/arasuresearch/arasu/router github.com/arasuresearch/arasu/controller github.com/arasuresearch/arasu/handler 
+   go install github.com/arasuresearch/arasu/deploy github.com/arasuresearch/arasu/bdd 
+   go install github.com/arasuresearch/arasu/datastorage/...
+}

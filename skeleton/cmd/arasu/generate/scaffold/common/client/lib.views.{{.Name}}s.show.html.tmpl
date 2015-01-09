@@ -1,0 +1,14 @@
+<div id="record-details">
+  <h3>{{.Cname}} Details</h3>
+  <table>
+  {{range $_,$e := .ClientAttrs}} 
+  <tr>
+    <td>{{$e}}</td> 
+    <td>_ocb_record.{{$e}}_ccb_</td>
+  </tr>
+  {{end}}
+  </table>
+  <a href="/#/{{.Name}}s/_ocb_record.Id_ccb_/edit">Edit</a>
+  <a href="/#/{{.Name}}s">Back to List</a>
+  <input type="submit" value="Remove" ng-click="destroy(record)">
+</div>

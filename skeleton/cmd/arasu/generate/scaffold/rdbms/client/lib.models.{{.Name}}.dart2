@@ -1,5 +1,0 @@
-import 'package:arasu/resource/resource.dart';
-
-class {{.Cname}} extends Model {
-    Map<String, String> metadata = {{.ClientModelMetadata}};
-}

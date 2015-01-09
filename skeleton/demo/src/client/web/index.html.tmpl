@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{.Name}} Site</title>
+</head>
+<body>
+  
+  <center>
+    <h1>
+      <p id="hello">Hello, Welcome To Arasu , A Killer Framework !!!</p>
+    </h1>
+
+    <input id="sample_text_id" type="button" value="Click Me !!!" style="font-size:30px;">
+    <h3>  
+      <a href="http://arasuframework.org">Learn More...</a>
+    </h3>
+  </center>
+
+  <ng-view></ng-view>
+  <script type="application/dart" src="index.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>
+
+<!--
+
+this is default(index) template.
+if you want to override this ,then you can create another template named as web/resources.html & web/resources.dart files
+
+
++++File : web/resources.html ++++
+
+<!DOCTYPE html>
+<html ng-app>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resource Site</title>
+</head>
+<body>
+  <ng-view></ng-view>
+  <script type="application/dart" src="resourec.dart"></script>
+  <script src="packages/browser/dart.js"></script>
+</body>
+</html>
+
+
++++File : web/resources.dart ++++
+
+import 'package:demo/controllers/controllers.dart';
+import 'package:demo/routes/routes.dart';
+import 'package:logging/logging.dart';
+import 'package:angular/application_factory.dart';
+
+void main() {
+  Logger.root
+      ..level = Level.FINEST
+      ..onRecord.listen((LogRecord r) => print(r.message));
+  
+  applicationFactory()
+      ..addModule(new Controllers())
+      ..addModule(new Routes())
+      ..run();
+}
+
+-->

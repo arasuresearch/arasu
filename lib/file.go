@@ -41,8 +41,8 @@ func CreateAndWriteFile(name string, data []byte) error {
 func CreateTemplatedFile(src, dst string, data interface{}) error {
 	var TempWriter bytes.Buffer
 	fileTemplate, err := template.ParseFiles(src)
-	if strings.HasSuffix(path.Ext(src), "2") {
-		dst = strings.TrimSuffix(dst, "2")
+	if path.Ext(src) == ".tmpl" {
+		dst = strings.TrimSuffix(dst, ".tmpl")
 		content, err := ioutil.ReadFile(src)
 		if err != nil {
 			return err
@@ -59,6 +59,25 @@ func CreateTemplatedFile(src, dst string, data interface{}) error {
 		}
 		return nil
 	}
+
+	// if strings.HasSuffix(path.Ext(src), "2") {
+	// 	dst = strings.TrimSuffix(dst, "2")
+	// 	content, err := ioutil.ReadFile(src)
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	parsedContent, err := ParseAndExecuteTemplateText(string(content), data)
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	parsedContent = strings.Replace(parsedContent, "_ocb_", "{{", -1)
+	// 	parsedContent = strings.Replace(parsedContent, "_ccb_", "}}", -1)
+	// 	err = CreateAndWriteFile(dst, []byte(parsedContent))
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	return nil
+	// }
 
 	if err != nil {
 

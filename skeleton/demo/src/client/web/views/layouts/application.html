@@ -1,0 +1,48 @@
+<!--
+
+this is default body layout.
+if you want to override this body layout ,then you can create another layout and bind it in lib/routes/resources.dart like 
+create a body layout named as resources.html  
+
+
++++File name : web/views/layouts/resources.html ++++
+
+resources layout 
+<ng-view></ng-view>
+
++++File name : web/views/layouts/resources.html ++++
+
+
+
+
++++File name : lib/routes/resources.dart ++++
+
+part of routes;
+
+void ResourcesRoutes(Router router, RouteViewFactory views) {
+  views.configure({
+    'resources': ngRoute(
+      path: '/resources',
+      view: '/views/layouts/resources.html',
+      mount: {
+        '': ngRoute(
+          path: '/',
+          defaultRoute: true,
+          view: '/views/resources/index.html'),
+        'new': ngRoute(
+          path: '/new',
+          view: '/views/resources/new.html'),
+        'show': ngRoute(
+          path: '/:id/show',
+          view: '/views/resources/show.html'),
+        'edit': ngRoute(
+          path: '/:id/edit',
+          view: '/views/resources/edit.html')
+      })
+  });
+}  
+
++++File name : lib/routes/resources.dart ++++
+
+-->
+<ng-view></ng-view>

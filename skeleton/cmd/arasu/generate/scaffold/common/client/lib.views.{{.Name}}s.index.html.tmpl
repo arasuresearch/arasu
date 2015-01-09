@@ -1,0 +1,23 @@
+<h3>Listing {{.Cname}}s </h3>
+<table>
+  <thead>
+    <tr>
+      {{range $_,$e := .ClientAttrs}} 
+        <td>{{$e}}</td> 
+      {{end}}
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="record in records">
+      {{range $_,$e := .ClientAttrs}} 
+        <td>_ocb_record.{{$e}}_ccb_</td>
+      {{end}}
+      <td><a href="#/{{.Name}}s/_ocb_record.Id_ccb_/show">Show</a></td>
+      <td><a href="#/{{.Name}}s/_ocb_record.Id_ccb_/edit">Edit</a></td>
+      <td><input type="submit" value="Remove" ng-click="destroy(record)"></td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="/#/{{.Name}}s/new">Add new {{.Cname}}</a>
+

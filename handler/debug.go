@@ -95,6 +95,7 @@ func handle(w http.ResponseWriter, r *http.Request, registry router.Registry, ro
 	}
 	if b, err := json.Marshal(datas); err == nil {
 		fmt.Fprintf(w, "%s", b)
+
 	} else {
 		fmt.Fprintf(w, "%s", err)
 		return err

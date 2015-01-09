@@ -33,13 +33,14 @@ import (
 )
 
 type SubCmd struct {
-	Title string
-	Short string
-	Long  string
-	Flag  flag.FlagSet
-	Args  []string
-	Help  bool
-	App   *app.App
+	Title   string
+	Short   string
+	Long    string
+	Flag    flag.FlagSet
+	Args    []string
+	Help    bool
+	AppName string
+	App     *app.App
 }
 
 func StartAssetServer(dir, mode, port string) error {

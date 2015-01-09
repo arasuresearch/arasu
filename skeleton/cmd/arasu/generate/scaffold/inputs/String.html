@@ -1,0 +1,17 @@
+  <div class="form-group">
+    <label>{{.}}</label> 
+    <input type="text" id="{{.}}" name="{{.}}"
+      required ng-minlength="2" ng-maxlength="5" ng-model="record.{{.}}"
+      class="form-control" placeholder="Enter your {{.}}" />
+    <div class="validation-error">
+      <div
+        ng-if="formSubmitted && form.controls['{{.}}'].first.errorStates['ng-required'].first.invalid">
+        {{.}} is required.</div>
+      <div
+        ng-if="formSubmitted && form.controls['{{.}}'].first.errorStates['ng-minlength'].first.invalid">
+        {{.}} must be atleast 2</div>
+      <div
+        ng-if="formSubmitted && form.controls['{{.}}'].first.errorStates['ng-maxlength'].first.invalid">
+        {{.}} must be atmost 5</div>
+    </div>
+  </div>

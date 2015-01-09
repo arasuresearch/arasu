@@ -1,0 +1,11 @@
+{
+	"settings": {
+	"GoSublime": {
+	   	"use_gs_gopath": true,
+	        "env": {
+	          	"GOPATH": "$GS_GOPATH:$GOPATH" 
+	        }
+	    }
+	},
+	"folders": []
+}

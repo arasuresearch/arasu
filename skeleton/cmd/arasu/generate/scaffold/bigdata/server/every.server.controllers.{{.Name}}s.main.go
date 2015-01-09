@@ -42,6 +42,7 @@ func (c *{{.Cname}}sController) Update(id string, attr map[string]interface{}) (
 	if err = BigData.Save({{.Name}});err != nil {
 		return
 	}
+	BigData.GetRow({{.Name}})
 	return 
 }
 

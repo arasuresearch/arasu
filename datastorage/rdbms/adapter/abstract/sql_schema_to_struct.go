@@ -1,9 +1,10 @@
 package abstract
 
 import (
-	"bitbucket.org/pkg/inflect"
 	"fmt"
 	"github.com/arasuresearch/arasu/lib"
+	"github.com/arasuresearch/arasu/lib/stringer"
+
 	"io/ioutil"
 	"path"
 	"reflect"
@@ -46,7 +47,7 @@ func (a *AbstractAdapter) SchemaToStruct(adapter_path string) (*SchemaToStruct, 
 		table := TableStruct{Name: strings.Title(e)}
 		//fmt.Println("SHOW FIELDS FROM `" + e + "`")
 
-		tname := a.Quote(inflect.Pluralize(e))
+		tname := a.Quote(stringer.Pluralize(e))
 
 		rows, err := a.DB.Query("SHOW FIELDS FROM " + tname)
 		if err != nil {
@@ -70,7 +71,7 @@ func (a *AbstractAdapter) SchemaToStruct(adapter_path string) (*SchemaToStruct, 
 			tags := []string{}
 			var primary bool
 			if field := reflect.Indirect(reflect.ValueOf(args[0])).Interface(); field != nil {
-				v0 := inflect.Camelize(string(field.([]byte)))
+				v0 := stringer.Camelize(string(field.([]byte)))
 				//v0 := strings.Title(string(field.([]byte)))
 				name = v0
 			}
@@ -100,7 +101,7 @@ func (a *AbstractAdapter) SchemaToStruct(adapter_path string) (*SchemaToStruct, 
 				}
 			}
 			if field := reflect.Indirect(reflect.ValueOf(args[2])).Interface(); field != nil {
-				v0 := inflect.Camelize(string(field.([]byte)))
+				v0 := stringer.Camelize(string(field.([]byte)))
 				//v0 := strings.Title(string(field.([]byte)))
 				if v0 == "NO" {
 					tags = append(tags, "not null")

@@ -1,10 +1,10 @@
 package scaffold
 
 import (
-	"bytes"
+	//"bytes"
 	"fmt"
 	"github.com/arasuresearch/arasu/lib"
-	"html/template"
+	//"html/template"
 	"io/ioutil"
 	"os"
 	"path"
@@ -35,10 +35,10 @@ func (c *Scaffold) BigdataRun() error {
 		if exists && !c.Force {
 			return fmt.Errorf("%s already available if you want to overwrite it you can pass --force option", dst)
 		}
-		if ext == ".link" {
-			byt, _ := ioutil.ReadFile(src)
-			src = path.Join(c.App.ArasuRoot, string(byt))
-		}
+		// if ext == ".link" {
+		// 	byt, _ := ioutil.ReadFile(src)
+		// 	src = path.Join(c.App.ArasuRoot, string(byt))
+		// }
 		files[src] = dst
 		return nil
 	})
@@ -63,79 +63,25 @@ func (c *Scaffold) BigdataRun() error {
 	//pkgName := "ds/bigdata/migrate"
 	migDir := path.Join(c.App.Root, "src/tmp/arasu/main.go")
 	_ = lib.AddImports(migDir, `_ "ds/bigdata/migrate"`)
-	return c.BigdataCopyClient()
 
-	//fmt.Println("==================================")
+	if err = c.CopyClient(); err != nil {
+		return err
+	}
 
-	//rm -rf d0;arasubuild;arasu new d0 -d mysql -ds rdbms;arasu generate scaffold Post name
-	//arasu generate scaffold Post name
+	return c.CopyClientIndividual("bigdata/client")
+}
 
-}
-func (c *Scaffold) revert(files map[string]string) {
-	for _, v := range files {
-		_ = os.Remove(v)
-	}
-}
-func (c *Scaffold) BigdataCopyClient() error {
-	var formSrc, formDst string
-	files := map[string]string{}
-	err := filepath.Walk(path.Join(c.SkeletonDir, "bigdata/client"), func(src string, info os.FileInfo, err error) error {
-		if info.IsDir() {
-			return nil
-		}
-		_, fn := filepath.Split(src)
-		ext := filepath.Ext(fn)
-		fn = strings.TrimSuffix(fn, ext)
-		fn, _ = lib.ParseAndExecuteTemplateText(fn, c)
-		fns := strings.Split(fn, ".")
-		fn = strings.Join(fns, "/") + ext
-		dst := path.Join(c.AppSrcDir, "client", fn)
-		if ext == ".link" {
-			byt, _ := ioutil.ReadFile(src)
-			src = path.Join(c.App.ArasuRoot, string(byt))
-		}
-		if strings.HasSuffix(src, "form.html") {
-			formSrc, formDst = src, dst
-			return nil
-		}
-		files[src] = dst
-		return nil
-	})
-	if err != nil {
-		return err
-	}
-	for src, dst := range files {
-		if err := lib.CreateTemplatedFile(src, dst, c); err != nil {
-			return err
-		}
-		fmt.Println("created ", dst)
-	}
-	return c.BigdataCopyClientForm(formSrc, formDst)
-}
-func (c *Scaffold) BigdataCopyClientForm(src, dst string) error {
-	content, err := ioutil.ReadFile(src)
-	if err != nil {
-		return err
-	}
-	var buf bytes.Buffer
-	Templates, err := template.New("tmp").Parse(string(content))
-	if err != nil {
-		return err
-	}
-	if err = loadClientViewIndividualTemplates(Templates, path.Join(c.SkeletonDir, "common")); err != nil {
-		return err
-	}
-	//fmt.Println(c.ClientModelViewAttrs)
-	if err = Templates.Execute(&buf, c); err != nil {
-		return err
-	}
-	if err := lib.CreateAndWriteFile(dst, buf.Bytes()); err != nil {
-		return err
-	}
-	return nil
-}
+//fmt.Println("==================================")
+
+//rm -rf d0;arasubuild;arasu new d0 -d mysql -ds rdbms;arasu generate scaffold Post name
+//arasu generate scaffold Post name
 
 //git clean -f -d;arasubuild;arasu generate scaffold Mike Contact Post:{Fn,Ln} Profile:{Name:String,Age:int,Dob:DateTime}
 // arasubuild;arasu update schema --ds-path bigdata
 // arasu update schema --ds-path bigdata
 //  rm -rf d1; arasubuild;arasu new d1 -d hbase -ds bigdata
+// func (c *Scaffold) revert(files map[string]string) {
+// 	for _, v := range files {
+// 		_ = os.Remove(v)
+// 	}
+// }
