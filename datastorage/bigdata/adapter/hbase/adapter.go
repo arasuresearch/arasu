@@ -2,7 +2,7 @@ package hbase
 
 import (
 	"fmt"
-	"git.apache.org/thrift.git/lib/go/thrift"
+	"github.com/apache/thrift/lib/go/thrift"
 	"github.com/arasuresearch/arasu/datastorage/bigdata/adapter/abstract"
 	. "github.com/arasuresearch/arasu/datastorage/bigdata/adapter/hbase/thrift/Hbase"
 	"log"

@@ -10,10 +10,10 @@ Arasu is a Next Generation Full Stack Web framework written on Go language & Dar
 Features
 ========
 * lightning fast, because of golang and dartlang
-* use RDBMS and BIGDATA for serverside store
+* use RDBMS(mysql is default) and BIGDATA(hbase is default) for serverside store
 * use IndexedDB and Angular Dart for clientside store,clientside framework 
-* use TDD default by golang and dartlang 
-* use BDD with selenium and Spinach (this is in alpha)
+* use TDD defaultly supported by golang and dartlang 
+* use BDD with selenium and Spinach (this is not yet started github.com/arasuresearch/arasu/bdd)
 * automatic build system.
 
 Installation
@@ -21,16 +21,24 @@ Installation
 
 * Install <a href="http://golang.org">Golang</a> then add golang binary into system PATH.
 
+<pre>
 export GOROOT="go-installation-directory" 
+</pre>
 for example if you extracted downloaded go.tag.gz into "/home/user/go" then 
+<pre>
 export GOROOT=/home/user/go
-
-export GOROOT="any-directory-where-you-want-to-keep-go-libraries" 
+</pre>
+<pre>
+export GOPATH="any-directory-where-you-want-to-keep-go-libraries" 
+</pre>
 for example you can use
+<pre>
 export GOPATH=/home/user/gopath
-
+</pre>
 add both bin into system PATH by
+<pre>
 export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+</pre>
 
 verify the sucessfull installation by 
 <pre>
@@ -38,20 +46,23 @@ verify the sucessfull installation by
 go version go1.4 linux/amd64
 </pre>
 
-* Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add dart-sdk binary into system PATH.
+* Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add DART_HOME & dart-sdk binary into system PATH.
 
-add dart bin into system PATH by
-for example if you extracted downloaded dart.tag.gz into "/home/user/dart" then 
-
-export PATH=/home/user/dart/dart-sdk/bin:$PATH
+for example if you extracted downloaded dart.tag.gz into "/home/user/dart" then add
+<pre>
+export DART_HOME=/home/user/dart
+export PATH=$DART_HOME/dart-sdk/bin:$PATH
+</pre>
 
 verify the sucessfull installation by 
+
 <pre>
 ~$ dart --version
 Dart VM version: 1.8.3 (Mon Dec  1 08:42:49 2014) on "linux_x64"
 </pre>
 
 * Install <a href="http://www.mysql.com">Mysql</a> then add mysql binary into system PATH and verify the sucessfull installation by 
+
 <pre>
 ~$ mysql --version
 mysql  Ver 14.14 Distrib 5.5.37, for debian-linux-gnu (x86_64) using readline 6.2
@@ -61,13 +72,14 @@ mysql  Ver 14.14 Distrib 5.5.37, for debian-linux-gnu (x86_64) using readline 6.
 * Install <a href="http://hbase.apache.org">Hbase</a> then add hbase binary into system PATH.
 
 set HBASE_HOME , JAVA_HOME and add these bin into system $PATH 
+<pre>
 export HBASE_HOME=/hbase/extracted/folder
-export JAVA_HOME=/java/installed/folder
-
+export JAVA_HOME=/java/extracted_or_installed/folder
+</pre>
 export PATH=$HBASE_HOME/bin:$JAVA_HOME/bin:$PATH
 
 
-verify the installation is sucessfull by 
+verify the sucessfull installation  by 
 <pre>
 ~$ hbase version
 //some valid output
@@ -97,40 +109,48 @@ Creating scaffold for relational Database Management System aka RDBMS (mysql)
 Now start the server:
 
 <pre>
-
-~$ arasu serve
-
-// you will get output like "You don't have a lockfile, so we need to generate that:" by DArt Pub Manager ,this will take few more seconds (this will occur at first time only).
-// 
-// then 
-//you may get dart-sdk "pub downlad error" for few times , but you can ignore and stop the command by CTRL + C .
-//and start the same command again until sucessfull start.
-  
 ~$ arasu serve
 </pre>
+// you will get output like "You don't have a lockfile, so we need to generate that:" by 
+// Dart Pub Manager ,this will take few more seconds (this will occur at first time only).
   
 after successfull start....
 
-now visit http://localhost:4000/ on 
-<i><a href="https://www.dartlang.org/tools/dartium">Dartium</a> or dart enabled chrome</i> 
-browser. 
+now visit "http://localhost:4000/" or "http://localhost:4000/#/admins" on Dartium
 <pre>
-To open dartium 
-~$ ./DART-SDK-INSTALLED-DIRECTORY/chromiun/chrome 
+~$ $DART_HOME/chromium/chrome --user-data-dir=$HOME/.config/google-dart http://localhost:4000/#/admins
 </pre>
 
-then visit 
-> http://localhost:4000/admins.html
+open dartium dev tools settings and disable cache by checking "Disable cache (while DevTools is open)" 
+
+
+
+for ubuntu users (tested only on ubuntu 14.10) 
+if you get error like
+<pre>
+dart/chromium/chrome: error while loading shared libraries: libudev.so.0: cannot open shared object file: No such file or directory
+</pre>
+then check "/lib/x86_64-linux-gnu" folder for latest libudev and link it to 
+<pre>
+sudo ln -s /lib/x86_64-linux-gnu/libudev.so.1.4.0 /usr/lib/libudev.so.0
+</pre>
+
 
 There you can play !!!
 
+
+
 Part 2 
 ------
+Note : for normal application you can use any RDBMS like mysql as we did in the above part 1.
+this part 2 is using BigData(hbase) as database.
+please use hbase with caution (read more at <a href="http://hbase.apache.org">Hbase</a>)
+
 Creating scaffold for BigData (hbase)
 
 stop the arasu server by pressing CTRL + C
 
-open another terminal and start bigdata...
+open another new terminal and start bigdata...
 <pre>
 ~$ start-hbase.sh
 ~$ hbase thrift start
@@ -169,9 +189,14 @@ Now start the server:
 </pre>
 
 now visit 
-> http://localhost:4000/users.html
 
-on dartium browser, there you can play !!!!! 
+<pre>
+~$ $DART_HOME/chromium/chrome --user-data-dir=$HOME/.config/google-dart http://localhost:4000/#/users
+</pre>
+
+there you are !!!!!!!! 
+enjoyyyy!!!!!!
+
 
 <p>lets dive into Full Tutorial  <a href="http://arasuframework.org">Arasu Framework</a> To learn more...</p>
 
