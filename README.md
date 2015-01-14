@@ -19,16 +19,36 @@ Features
 Installation
 ============
 
-* Install <a href="http://golang.org">Golang</a> then add golang binary into system PATH and verify the sucessfull installation by 
+* Install <a href="http://golang.org">Golang</a> then add golang binary into system PATH.
+
+export GOROOT="go-installation-directory" 
+for example if you extracted downloaded go.tag.gz into "/home/user/go" then 
+export GOROOT=/home/user/go
+
+export GOROOT="any-directory-where-you-want-to-keep-go-libraries" 
+for example you can use
+export GOPATH=/home/user/gopath
+
+add both bin into system PATH by
+export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
+
+verify the sucessfull installation by 
 <pre>
 ~$ go version
-go version go1.3.1 linux/amd64
+go version go1.4 linux/amd64
 </pre>
 
-* Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add dart-sdk binary into system PATH and verify the sucessfull installation by 
+* Install <a href="http://dartlang.org">Dartlang(Dart SDK)</a> then add dart-sdk binary into system PATH.
+
+add dart bin into system PATH by
+for example if you extracted downloaded dart.tag.gz into "/home/user/dart" then 
+
+export PATH=/home/user/dart/dart-sdk/bin:$PATH
+
+verify the sucessfull installation by 
 <pre>
 ~$ dart --version
-Dart VM version: 1.5.8 (Tue Jul 29 07:05:41 2014) on "linux_x64"
+Dart VM version: 1.8.3 (Mon Dec  1 08:42:49 2014) on "linux_x64"
 </pre>
 
 * Install <a href="http://www.mysql.com">Mysql</a> then add mysql binary into system PATH and verify the sucessfull installation by 
@@ -37,7 +57,17 @@ Dart VM version: 1.5.8 (Tue Jul 29 07:05:41 2014) on "linux_x64"
 mysql  Ver 14.14 Distrib 5.5.37, for debian-linux-gnu (x86_64) using readline 6.2
 </pre>
 
-* Install <a href="http://hbase.apache.org">Hbase</a> then add hbase binary into system PATH and verify the installation is sucessfull by 
+
+* Install <a href="http://hbase.apache.org">Hbase</a> then add hbase binary into system PATH.
+
+set HBASE_HOME , JAVA_HOME and add these bin into system $PATH 
+export HBASE_HOME=/hbase/extracted/folder
+export JAVA_HOME=/java/installed/folder
+
+export PATH=$HBASE_HOME/bin:$JAVA_HOME/bin:$PATH
+
+
+verify the installation is sucessfull by 
 <pre>
 ~$ hbase version
 //some valid output
@@ -154,22 +184,27 @@ Contribute
 License
 ============================
 
-Copyright (c) 2014 Thaniyarasu Kannusamy <thaniyarasu@gmail.com>.
+The BSD License (BSD)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Copyright (c) 2015 Thaniyarasu Kannusamy <thaniyarasu@gmail.com> & Arasu Research Lab Pvt Ltd. All rights reserved.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+   * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright notice, this list of
+   conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+   * Neither Thaniyarasu Kannusamy <thaniyarasu@gmail.com>. nor ArasuResearch Inc may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND AUTHOR
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
